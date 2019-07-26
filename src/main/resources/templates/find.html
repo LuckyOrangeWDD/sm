@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="list" method="post">
+        <label>用户名：</label><input type="text" name="name">
+        <input type="submit" value="查询">
+        <a href="addI">新增</a>
+    </form>
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>用户名</th>
+            <th>性别</th>
+            <th>手机号</th>
+            <th>生日</th>
+            <th>角色</th>
+            <th>地址</th>
+            <th>操作</th>
+        </tr>
+
+        <tr th:each="f:${find}">
+            <td th:text="${f.id}"></td>
+            <td th:text="${f.userName}"></td>
+            <td th:if="${f.gender} eq 1">男</td>
+            <td th:if="${f.gender} eq 2">女</td>
+            <td th:text="${f.phone}"></td>
+            <td th:text="${f.birthday}"></td>
+            <td th:text="${f.role.roleName}"></td>
+            <td th:text="${f.address}"></td>
+            <td></td>
+        </tr>
+
+    </table>
+</body>
+</html>
